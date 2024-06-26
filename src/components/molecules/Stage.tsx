@@ -11,7 +11,6 @@ import ButtonParticipate from '../atoms/ButtonParticipate'
 import AudioWrapper from '../atoms/AudioWrapper'
 import AudioPlayer from './AudioPlayer'
 
-
 export default function Stage({ stage }: { stage: StageProps }) {
 	return (
 		<article
@@ -46,7 +45,7 @@ export default function Stage({ stage }: { stage: StageProps }) {
 
 				<AudioWrapper>
 					{stage.audios.map(audio => (
-						<AudioPlayer audio={audio}/>
+						<AudioPlayer key={audio.id} audio={audio} />
 					))}
 				</AudioWrapper>
 			</Wrapper>
