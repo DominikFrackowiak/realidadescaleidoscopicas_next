@@ -1,29 +1,18 @@
-interface Audio {
-	id: Number
-	title: String
-	transcript: String
-}
+import { StageProps } from "../types/types"
 
-interface Stage {
-	id: Number
-	icon: String
-	title: String
-	description: String
-	backgroundColor: String
-	transcriptBgColor: String
-	audios: Audio[]
-}
-
-const stagesData: Stage[] = [
+const stagesData: StageProps[] = [
 	{
 		id: 1,
-
 		icon: '/assets/images/1.png',
 		title: 'Cuidados',
 		description:
 			'El concepto de “cuidados” es muy amplio, sin embargo, todas sus acepciones se ven atravesadas y marcadas por los diferentes ejes de desigualdad como él género, la raza, la clase social o la edad. Haciendo que su responsabilidad caiga la mayoría de las veces sobre las mismas personas perpetuando así las desigualdades estructurales ya existentes.',
-		backgroundColor: 'lightred',
-		transcriptBgColor: 'lightred',
+		titleColor: '#fff',
+		backgroundColor: '#fc3951',
+		transcriptBgColor: '#fc3951',
+		descriptionColor: '#fff',
+		buttonBgColor: '#2e3192',
+		buttonBgColorOnHover: '#364ec6',
 		audios: [
 			{
 				id: 1,
@@ -47,13 +36,16 @@ const stagesData: Stage[] = [
 	},
 	{
 		id: 2,
-
 		icon: '/assets/images/2.png',
 		title: 'Educación',
 		description:
 			'La educación, es un derecho universal, un elemento fundamental para el logro efectivo de los otros derechos y una de las más poderosas herramientas de transformación social. Sin embargo, las metodologías, valores y contenidos que la caracterizan pueden facilitar o frenar su fundamental papel en el proceso de construcción de una realidad más justa y sostenible.',
-		backgroundColor: 'lightblue',
-		transcriptBgColor: 'lightblue',
+		titleColor: '#fc3951',
+		backgroundColor: '#364ec6',
+		transcriptBgColor: '#364ec6',
+		descriptionColor: '#fff',
+		buttonBgColor: '#fc3951',
+		buttonBgColorOnHover: '#ed0033',
 		audios: [
 			{
 				id: 1,
@@ -77,13 +69,16 @@ const stagesData: Stage[] = [
 	},
 	{
 		id: 3,
-
 		icon: '/assets/images/3.png',
 		title: 'Sanidad',
 		description:
 			'Alcanzar la cobertura sanitaria universal es uno de los Objetivos de Desarrollo Sostenible que se quieren conseguir antes de 2030. A día de hoy casi la mitad de la población a nivel mundial carece del acceso integral a los servicios de salud mientras se sigue reivindicando desde distintos colectivos un sistema sanitario que respete y proteja su integridad física y psíquica.',
-		backgroundColor: 'white',
-		transcriptBgColor: 'lightblue',
+		titleColor: '#2e3192',
+		backgroundColor: '#fff',
+		transcriptBgColor: '#364ec6',
+		descriptionColor: '#fc3951',
+		buttonBgColor: '#2e3192',
+		buttonBgColorOnHover: '#364ec6',
 		audios: [
 			{
 				id: 1,
@@ -107,13 +102,16 @@ const stagesData: Stage[] = [
 	},
 	{
 		id: 4,
-
 		icon: '/assets/images/4.png',
 		title: 'Cultura Participada',
 		description:
 			'Los modelos culturales hegemónicos, la mayoría de las veces, no solamente no representan las minorías, sino que les quitan las herramientas para hablar de su propia experiencia. ¿Qué entendemos por cultura? ¿Qué entendemos con la palabra “conocimientos”? ¿Quién los genera y quien los legitima?',
-		backgroundColor: 'lightred',
-		transcriptBgColor: 'lightred',
+		titleColor: '#fff',
+		backgroundColor: '#fc3951',
+		transcriptBgColor: '#fc3951',
+		descriptionColor: '#fff',
+		buttonBgColor: '#2e3192',
+		buttonBgColorOnHover: '#364ec6',
 		audios: [
 			{
 				id: 1,
@@ -137,13 +135,16 @@ const stagesData: Stage[] = [
 	},
 	{
 		id: 5,
-
 		icon: '/assets/images/5.png',
 		title: 'Vivienda',
 		description:
 			'El derecho a una vivienda digna se sigue reivindicando desde distintos colectivos. Sin embargo, el camino para garantizar que todas las personas puedan disfrutar de este derecho, independientemente de su origen, género, identidad sexual, raza, clase social o la edad sigue siendo largo.',
-		backgroundColor: 'lighblue',
-		transcriptBgColor: 'lighblue',
+		titleColor: '#fc3951',
+		backgroundColor: '#364ec6',
+		transcriptBgColor: '#364ec6',
+		descriptionColor: '#fff',
+		buttonBgColor: '#fc3951',
+		buttonBgColorOnHover: '#ed0033',
 		audios: [
 			{
 				id: 1,
