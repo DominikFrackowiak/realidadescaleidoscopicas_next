@@ -12,7 +12,7 @@
 		"next": "14.2.4",
 		"react": "^18",
 		"react-dom": "^18",
-		"react-wordcloud": "file:./react-wordcloud"
+		"react-wordcloud": "file:../react-wordcloud"
 	},
 	"devDependencies": {
 		"@babel/plugin-transform-class-properties": "^7.24.7",
