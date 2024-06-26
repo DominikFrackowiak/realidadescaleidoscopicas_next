@@ -62,6 +62,11 @@ export default function WordCloudComponent() {
 	])
 
 	const [isWindow, setIsWindow] = useState(false)
+	const [isClient, setIsClient] = useState(false)
+
+	useEffect(() => {
+		setIsClient(true)
+	}, [])
 
 	useEffect(() => {
 		setTimeout(() => setIsWindow(true), 400)
@@ -146,7 +151,7 @@ export default function WordCloudComponent() {
 		<>
 			{/* {isPending && <p>Loading...</p>}
 			{error && <p>{error.message}</p>} */}
-			{words && typeof window !== 'undefined' && (
+			{words && isClient&& typeof window !== 'undefined' && (
 				<div style={{ height: '700px', width: '100vw' }}>
 					<ReactWordcloud options={options} words={words} />
 				</div>
