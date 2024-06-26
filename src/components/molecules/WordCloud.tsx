@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
-import ReactWordcloud from 'react-wordcloud'
+import ReactWordcloud, { Scale } from 'react-wordcloud'
 
 interface WordCloudProps {
 	initialWords?: Array<{ text: string; value: number }>
@@ -18,8 +18,8 @@ interface Options {
 	padding: number
 	rotations: number
 	rotationAngles: [number, number]
-	scale: string
-	spiral: string
+	scale: Scale
+	spiral: 'archimedean' | 'rectangular'
 	transitionDuration: number
 }
 
