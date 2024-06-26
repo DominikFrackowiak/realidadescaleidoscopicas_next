@@ -1,161 +1,77 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import ReactWordcloud from 'react-wordcloud'
 
-
-// import { db } from './firebase/config'
+interface WordCloudProps {
+	initialWords?: Array<{ text: string; value: number }>
+}
 
 interface Options {
-	colors: ['#fc3951', '#ed0033', '#364ec6', '#2e3192']
+	colors: string[]
 	enableTooltip: boolean
 	deterministic: boolean
 	fontFamily: string
-	fontSizes: [20, 70]
-
+	fontSizes: [number, number]
 	fontStyle: string
 	fontWeight: string
 	padding: number
 	rotations: number
-	rotationAngles: [0, 90]
-	scale: 'sqrt'
-	spiral: 'archimedean'
+	rotationAngles: [number, number]
+	scale: string
+	spiral: string
 	transitionDuration: number
 }
 
-const options: Options = {
-	colors: ['#fc3951', '#ed0033', '#364ec6', '#2e3192'],
-	enableTooltip: true,
-	deterministic: false,
-	fontFamily: 'Galano Grotesque Semibold',
-	fontSizes: [20, 70],
+const WordCloudComponent: React.FC<WordCloudProps> = ({
+	initialWords = [],
+}) => {
+	const [words, setWords] = useState(
+		initialWords.length > 0
+			? initialWords
+			: [
+					{ text: 'told', value: 64 },
+					{ text: 'mistake', value: 11 },
+					{ text: 'thought', value: 16 },
+					{ text: 'bad', value: 17 },
+					{ text: 'Andrzy', value: 64 },
+			  ]
+	)
 
-	fontStyle: 'normal',
-	fontWeight: 'normal',
-	padding: 1,
-	rotations: 3,
-	rotationAngles: [0, 90],
-	scale: 'sqrt',
-	spiral: 'archimedean',
-	transitionDuration: 1000,
-}
-
-export default function WordCloudComponent() {
-	const [words, setWords] = useState([
-		{
-			text: 'told',
-			value: 64,
-		},
-		{
-			text: 'mistake',
-			value: 11,
-		},
-		{
-			text: 'thought',
-			value: 16,
-		},
-		{
-			text: 'bad',
-			value: 17,
-		},
-		{ text: 'Andrzy', value: 64 },
-	])
-
-	const [isWindow, setIsWindow] = useState(false)
 	const [isClient, setIsClient] = useState(false)
 
 	useEffect(() => {
 		setIsClient(true)
 	}, [])
 
-	useEffect(() => {
-		setTimeout(() => setIsWindow(true), 400)
-	}, [])
-	// const [isPending, setIsPending] = useState(false)
-	// const [error, setError] = useState(false)
-	// const [isInViewport, setIsInViewport] = useState(null)
-	// const [isLinkClicked, setIsLinkClicked] = useState(null)
+	const options: Options = useMemo(
+		() => ({
+			colors: ['#fc3951', '#ed0033', '#364ec6', '#2e3192'],
+			enableTooltip: true,
+			deterministic: false,
+			fontFamily: 'Galano Grotesque Semibold',
+			fontSizes: [20, 70],
+			fontStyle: 'normal',
+			fontWeight: 'normal',
+			padding: 1,
+			rotations: 3,
+			rotationAngles: [0, 90],
+			scale: 'sqrt',
+			spiral: 'archimedean',
+			transitionDuration: 1000,
+		}),
+		[]
+	)
 
-	// const intersectionObserver = element => {
-	// 	const observer = new IntersectionObserver(entries => {
-	// 		entries.forEach(entry => {
-	// 			if (entry.isIntersecting) {
-	// 				setTimeout(() => setIsInViewport(true), 500)
-	// 			} else {
-	// 				setIsInViewport(false)
-	// 			}
-	// 		})
-	// 	})
-	// 	observer.observe(element)
-	// }
+	if (!isClient) {
+		return null // lub jakiś placeholder
+	}
 
-	// useEffect(() => {
-	// 	setIsLinkClicked(false)
-	// 	linksToTheCloud.forEach(link =>
-	// 		link.addEventListener('click', () => setIsLinkClicked(true))
-	// 	)
-	// 	db.collection('opinions')
-	// 		.orderBy('value', 'desc')
-	// 		.limit(15)
-	// 		.get()
-	// 		.then(snapshot => {
-	// 			if (snapshot.empty) {
-	// 				setError('Todavía no hay ninguna palabra')
-	// 				setIsPending(false)
-	// 			} else {
-	// 				let results = []
-	// 				snapshot.docs.forEach(doc => {
-	// 					results.push({ ...doc.data() })
-	// 				})
-	// 				setWords(results)
-	// 				setIsPending(false)
-	// 			}
-	// 		})
-	// 		.catch(err => {
-	// 			setError(err.message)
-	// 			setIsPending(false)
-	// 		})
-	// }, [isLinkClicked, isInViewport])
-
-	// useEffect(() => {
-	// 	intersectionObserver(htmlElements.wordCloud)
-
-	// 	const unsub = db
-	// 		.collection('opinions')
-	// 		.orderBy('value', 'desc')
-	// 		.limit(15)
-	// 		.onSnapshot(
-	// 			snapshot => {
-	// 				if (snapshot.empty) {
-	// 					setError('Todavía no hay ninguna palabra')
-	// 					setIsPending(false)
-	// 				} else {
-	// 					let results = []
-	// 					snapshot.docs.forEach(doc => {
-	// 						results.push({ ...doc.data() })
-	// 					})
-	// 					setWords(results)
-	// 					setIsPending(false)
-	// 				}
-	// 			},
-	// 			err => {
-	// 				setError(err.message)
-	// 				setIsPending(false)
-	// 			}
-	// 		)
-
-	// 	return () => unsub()
-	// }, [])
-	
 	return (
-		<>
-			{/* {isPending && <p>Loading...</p>}
-			{error && <p>{error.message}</p>} */}
-			{words && isClient&& typeof window !== 'undefined' && (
-				<div style={{ height: '700px', width: '100vw' }}>
-					<ReactWordcloud options={options} words={words} />
-				</div>
-			)}
-		</>
+		<div style={{ height: '700px', width: '100vw' }}>
+			<ReactWordcloud options={options} words={words} />
+		</div>
 	)
 }
+
+export default WordCloudComponent

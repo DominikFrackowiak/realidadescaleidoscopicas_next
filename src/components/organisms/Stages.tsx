@@ -14,7 +14,7 @@ export default function Stages() {
 	return (
 		<>
 			<WordCloudComponent />
-			{/* {Stages} */}
+			{Stages}
 		</>
 	)
 }
