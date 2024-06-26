@@ -57,6 +57,7 @@ export default function WordCloud() {
 			text: 'bad',
 			value: 17,
 		},
+		{ text: 'Andrzy', value: 121 },
 	])
 
 	const [isWindow, setIsWindow] = useState(false)
