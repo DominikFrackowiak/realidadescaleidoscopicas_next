@@ -8,19 +8,19 @@ import { Audio } from '../../../types/types'
 
 export default function AudioPlayer({ audio }: { audio: Audio }) {
 	const [isPlaying, setIsPlaying] = useState(false)
-	const audioRef = useRef(null) 
+	const audioRef = useRef<HTMLAudioElement>(null)
 
-	const togglePlayPause = () => {
-		const sound = audioRef.current
-		if (!sound) return 
+const togglePlayPause = () => {
+	const sound = audioRef.current
+	if (!sound) return
 
-		if (isPlaying) {
-			sound.pause()
-		} else {
-			sound.play()
-		}
-		setIsPlaying(!isPlaying) 
+	if (isPlaying) {
+		sound.pause()
+	} else {
+		sound.play().catch(e => console.error('Error playing audio:', e))
 	}
+	setIsPlaying(!isPlaying)
+}
 
 	return (
 		<button
