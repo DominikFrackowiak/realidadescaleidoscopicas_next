@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-import ReactWordcloud from 'react-wordcloud/docs/react-wordcloud'
+import ReactWordcloud from '../../../react-wordcloud'
 // import { db } from './firebase/config'
 
 interface Options {
