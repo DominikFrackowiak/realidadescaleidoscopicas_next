@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect, useCallback } from 'react'
 import ReactWordcloud from 'react-wordcloud'
+
+
 // import { db } from './firebase/config'
 
 interface Options {
@@ -39,7 +40,7 @@ const options: Options = {
 	transitionDuration: 1000,
 }
 
-export default function WordCloud() {
+export default function WordCloudComponent() {
 	const [words, setWords] = useState([
 		{
 			text: 'told',
@@ -57,9 +58,7 @@ export default function WordCloud() {
 			text: 'bad',
 			value: 17,
 		},
-		{ text: 'Andrzy', 
-		  value: 64 
-	},
+		{ text: 'Andrzy', value: 64 },
 	])
 
 	const [isWindow, setIsWindow] = useState(false)
@@ -142,16 +141,14 @@ export default function WordCloud() {
 
 	// 	return () => unsub()
 	// }, [])
-
+	
 	return (
 		<>
 			{/* {isPending && <p>Loading...</p>}
 			{error && <p>{error.message}</p>} */}
-			{words && (
+			{words && typeof window !== 'undefined' && (
 				<div style={{ height: '700px', width: '100vw' }}>
-					{typeof window !== 'undefined' && (
-						<ReactWordcloud options={options} words={words} />
-					)}
+					<ReactWordcloud options={options} words={words} />
 				</div>
 			)}
 		</>
