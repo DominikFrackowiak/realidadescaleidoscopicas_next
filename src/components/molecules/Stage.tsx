@@ -8,10 +8,11 @@ import Heading from '../atoms/Heading'
 import Description from '../atoms/Description'
 import Wrapper from '../atoms/Wrapper'
 import ButtonParticipate from '../atoms/ButtonParticipate'
+import AudioWrapper from '../atoms/AudioWrapper'
+import AudioPlayer from './AudioPlayer'
 
 
-export default function Stage({stage}: {stage: StageProps}) {
-	
+export default function Stage({ stage }: { stage: StageProps }) {
 	return (
 		<article
 			className='flex flex-col min-h-screen justify-center items-center'
@@ -42,6 +43,12 @@ export default function Stage({stage}: {stage: StageProps}) {
 				>
 					Participa en Yincana
 				</ButtonParticipate>
+
+				<AudioWrapper>
+					{stage.audios.map(audio => (
+						<AudioPlayer audio={audio}/>
+					))}
+				</AudioWrapper>
 			</Wrapper>
 		</article>
 	)
