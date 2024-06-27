@@ -2,42 +2,14 @@
 
 import React, { useState, useEffect, useMemo } from 'react'
 import ReactWordcloud, { Scale } from 'react-wordcloud'
+import useFirestoreData from '../../hooks/useFirestoreData'
 
-interface WordCloudProps {
-	initialWords?: Array<{ text: string; value: number }>
-}
-
-interface Options {
-	colors: string[]
-	enableTooltip: boolean
-	deterministic: boolean
-	fontFamily: string
-	fontSizes: [number, number]
-	fontStyle: string
-	fontWeight: string
-	padding: number
-	rotations: number
-	rotationAngles: [number, number]
-	scale: Scale
-	spiral: 'archimedean' | 'rectangular'
-	transitionDuration: number
-}
+import { FirestoreWord, Options, WordCloudProps } from '../../../types/types'
 
 const WordCloudComponent: React.FC<WordCloudProps> = ({
 	initialWords = [],
 }) => {
-	const [words, setWords] = useState(
-		initialWords.length > 0
-			? initialWords
-			: [
-					{ text: 'told', value: 64 },
-					{ text: 'mistake', value: 11 },
-					{ text: 'thought', value: 16 },
-					{ text: 'bad', value: 17 },
-					{ text: 'Andrzy', value: 64 },
-			  ]
-	)
-
+	const { words, isPending, error } = useFirestoreData('opinions')
 	const [isClient, setIsClient] = useState(false)
 
 	useEffect(() => {
@@ -63,13 +35,18 @@ const WordCloudComponent: React.FC<WordCloudProps> = ({
 		[]
 	)
 
-	if (!isClient) {
-		return null // lub jakiś placeholder
-	}
+	if (isPending) return <div>Loading...</div>
+	if (error) return <div>Error: {error}</div>
+	if (!isClient) return null
+
+	const wordcloudData: FirestoreWord[] = words.map((word: FirestoreWord) => ({
+		text: word.text,
+		value: word.value,
+	}))
 
 	return (
 		<div style={{ height: '700px', width: '100vw' }}>
-			<ReactWordcloud options={options} words={words} />
+			<ReactWordcloud options={options} words={wordcloudData} />
 		</div>
 	)
 }

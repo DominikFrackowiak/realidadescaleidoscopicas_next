@@ -1,3 +1,5 @@
+import { Scale } from 'react-wordcloud'
+
 // types.ts
 export interface Audio {
 	id: number
@@ -19,4 +21,30 @@ export interface StageProps {
 	buttonBgColor: Colors
 	buttonBgColorOnHover: Colors
 	audios: Audio[]
+}
+
+export interface FirestoreWord {
+	id?: string
+	text: string
+	value: number
+}
+
+export interface Options {
+	colors: string[]
+	enableTooltip: boolean
+	deterministic: boolean
+	fontFamily: string
+	fontSizes: [number, number]
+	fontStyle: string
+	fontWeight: string
+	padding: number
+	rotations: number
+	rotationAngles: [number, number]
+	scale: Scale
+	spiral: 'archimedean' | 'rectangular'
+	transitionDuration: number
+}
+
+export interface WordCloudProps {
+	initialWords?: Array<{ text: string; value: number }>
 }
