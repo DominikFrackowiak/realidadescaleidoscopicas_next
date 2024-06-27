@@ -45,7 +45,7 @@ export default function Stage({ stage }: { stage: StageProps }) {
 
 				<AudioWrapper>
 					{stage.audios.map(audio => (
-						<AudioPlayer key={audio.id} audio={audio} />
+						<AudioPlayer key={audio.id} audio={audio} textColor={stage.audioTextColor} borderColor={stage.borderColor} iconPlay={stage.iconPlay} iconPause={stage.iconPause}/>
 					))}
 				</AudioWrapper>
 			</Wrapper>

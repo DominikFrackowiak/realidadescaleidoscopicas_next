@@ -5,6 +5,7 @@ export interface Audio {
 	id: number
 	title: string
 	transcript: string
+	audioSrc: string
 }
 
 export type Colors = '#fff' | '#fc3951' | '#ed0033' | '#364ec6' | '#2e3192'
@@ -20,6 +21,10 @@ export interface StageProps {
 	transcriptBgColor: Colors
 	buttonBgColor: Colors
 	buttonBgColorOnHover: Colors
+	iconPlay: string
+	iconPause: string
+	borderColor: '#fc3951' | '#2e3192'
+	audioTextColor: '#fff' | '#364ec6'
 	audios: Audio[]
 }
 
