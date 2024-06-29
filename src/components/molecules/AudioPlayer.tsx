@@ -57,7 +57,7 @@ export default function AudioPlayer({
 					{audio.title}
 				</span>
 				<Divider
-					className='w-32 h-[1px]'
+					classes='w-32 h-[1px]'
 					style={{ color: `${borderColor}`, backgroundColor: `${borderColor}` }}
 				/>
 			</button>

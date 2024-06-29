@@ -1,12 +1,12 @@
 import React from 'react'
 
 interface Props{
- className: string
+ classes: string
  style: any
 }
 
-export default function Divider({className, style}): Props {
+export default function Divider({classes, style}: Props):  JSX.Element {
   return (
-    <div className={className} style={style}></div>
+    <div className={classes} style={style}></div>
   )
 }

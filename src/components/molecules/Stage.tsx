@@ -14,7 +14,7 @@ import AudioPlayer from './AudioPlayer'
 export default function Stage({ stage }: { stage: StageProps }) {
 	return (
 		<article
-			className='flex flex-col min-h-screen justify-center items-center'
+			className='flex flex-col min-h-screen justify-around items-center'
 			style={{ width: '100vw', backgroundColor: stage.backgroundColor }}
 		>
 			<Wrapper>
