@@ -1,14 +1,12 @@
 'use client'
 
-import React, { useState, useEffect, useMemo } from 'react'
-import ReactWordcloud, { Scale } from 'react-wordcloud'
+import { useState, useEffect, useMemo } from 'react'
+import ReactWordcloud from 'react-wordcloud'
 import useFirestoreData from '../../hooks/useFirestoreData'
 
 import { FirestoreWord, Options, WordCloudProps } from '../../../types/types'
 
-const WordCloudComponent: React.FC<WordCloudProps> = ({
-	initialWords = [],
-}) => {
+function WordCloudComponent({ initialWords = [] }: WordCloudProps) {
 	const { words, isPending, error } = useFirestoreData('opinions')
 	const [isClient, setIsClient] = useState(false)
 

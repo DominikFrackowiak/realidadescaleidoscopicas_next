@@ -10,7 +10,7 @@ interface Props {
  bgColorOnHover: string
 }
 
-export default function ButtonParticipate({ children, bgColor, bgColorOnHover }: Props) {
+export default function ButtonParticipate({ children, bgColor, bgColorOnHover }: Props) : JSX.Element{
 const [hover, setHover] = useState(false)
 
 	return (
