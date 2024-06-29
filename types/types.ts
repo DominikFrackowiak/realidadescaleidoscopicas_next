@@ -6,12 +6,14 @@ export interface Audio {
 	title: string
 	transcript: string
 	audioSrc: string
+	category: string
 }
 
 export type Colors = '#fff' | '#fc3951' | '#ed0033' | '#364ec6' | '#2e3192'
 
 export interface StageProps {
 	id: number
+	category: string
 	icon: string
 	title: string
 	description: string

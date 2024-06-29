@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import AudioIconsWrapper from '../atoms/AudioIconsWrapper'
 import Divider from '../atoms/Divider'
@@ -12,6 +13,7 @@ interface Props {
 	borderColor: string
 	iconPlay: string
 	iconPause: string
+
 	audio: Audio
 }
 
@@ -50,7 +52,7 @@ export default function AudioPlayer({
 						alt={isPlaying ? 'pause icon' : 'play icon'}
 						height={90}
 						width={100}
-						className='absolute top-0 left-0 w-20'
+						className='absolute top-0 left-0 w-16'
 					/>
 				</AudioIconsWrapper>
 				<span className='text-2xl' style={{ color: textColor }}>
@@ -61,12 +63,18 @@ export default function AudioPlayer({
 					style={{ color: `${borderColor}`, backgroundColor: `${borderColor}` }}
 				/>
 			</button>
+
 			<button
 				className='flex flex-col items-center'
 				style={{ color: textColor }}
 			>
-				<span>más info</span>
-				<span>+++</span>
+				<Link
+					href={`/transcripts/${audio.category}/${audio.id}`}
+					className='flex flex-col items-center'
+				>
+					<span>más info</span>
+					<span>+++</span>
+				</Link>
 			</button>
 		</div>
 	)

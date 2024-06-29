@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function AudioIconsWrapper({ children }: Props): JSX.Element {
-	return <div className='relative h-[90px] w-20' >{children}</div>
+	return <div className='relative h-[70px] w-16'>{children}</div>
 }
