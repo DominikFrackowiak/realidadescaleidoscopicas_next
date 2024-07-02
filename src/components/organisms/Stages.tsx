@@ -8,8 +8,8 @@ const WordCloudComponent = dynamic(() => import('../molecules/WordCloud'), {
 
 import stagesData from '../../../constants/stagesData'
 
-export default function Stages(category: string) {
-	const Stages = stagesData.map(stage => <Stage key={stage.id} stage={stage}/>)
+export default function Stages() {
+	const Stages = stagesData.map(stage => <Stage key={stage.id} stage={stage} />)
 
 	return (
 		<>
