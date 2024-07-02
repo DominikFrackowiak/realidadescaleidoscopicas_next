@@ -28,6 +28,7 @@ export interface StageProps {
 	borderColor: '#fc3951' | '#2e3192'
 	audioTextColor: '#fff' | '#364ec6'
 	audios: Audio[]
+
 }
 
 export interface FirestoreWord {

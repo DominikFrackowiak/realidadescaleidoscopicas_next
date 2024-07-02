@@ -9,7 +9,6 @@ export default function Description({
 	className,
 	color,
 }: DescriptionProps) {
-	console.log(color)
 	return (
 		<p className={className} style={{ color: color }}>
 			{text}

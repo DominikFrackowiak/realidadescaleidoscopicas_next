@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import AudioIconsWrapper from '../atoms/AudioIconsWrapper'
@@ -24,6 +25,7 @@ export default function AudioPlayer({
 	iconPlay,
 	iconPause,
 }: Props) {
+	
 	const [isPlaying, setIsPlaying] = useState(false)
 	const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -69,7 +71,7 @@ export default function AudioPlayer({
 				style={{ color: textColor }}
 			>
 				<Link
-					href={`/transcripts/${audio.category}/${audio.id}`}
+					href={`/?category=${audio.category}&id=${audio.id}`}
 					className='flex flex-col items-center'
 				>
 					<span>más info</span>

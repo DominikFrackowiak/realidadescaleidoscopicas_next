@@ -1,22 +1,30 @@
+'use client'
+
 import React from 'react'
+import { useSearchParams } from 'next/navigation'
 
 import { StageProps } from '../../../types/types'
 
 import Image from 'next/image'
 import Heading from '../atoms/Heading'
-
 import Description from '../atoms/Description'
 import Wrapper from '../atoms/Wrapper'
 import ButtonParticipate from '../atoms/ButtonParticipate'
 import AudioWrapper from '../atoms/AudioWrapper'
 import AudioPlayer from './AudioPlayer'
+import Transcript from './transcript/Transcript'
+import TranscriptContainer from './transcript/TranscriptContainer'
 
 export default function Stage({ stage }: { stage: StageProps }) {
+	const searchParams = useSearchParams()
+	const cat = searchParams.get('category') === stage.category
+	// console.log(stage)
 	return (
 		<article
 			className='flex flex-col min-h-screen justify-around items-center'
 			style={{ width: '100vw', backgroundColor: stage.backgroundColor }}
 		>
+			{cat ? <TranscriptContainer /> : null}
 			<Wrapper>
 				<Heading
 					headingType={'h2'}
@@ -45,7 +53,14 @@ export default function Stage({ stage }: { stage: StageProps }) {
 
 				<AudioWrapper>
 					{stage.audios.map(audio => (
-						<AudioPlayer key={audio.id} audio={audio} textColor={stage.audioTextColor} borderColor={stage.borderColor} iconPlay={stage.iconPlay} iconPause={stage.iconPause}/>
+						<AudioPlayer
+							key={audio.id}
+							audio={audio}
+							textColor={stage.audioTextColor}
+							borderColor={stage.borderColor}
+							iconPlay={stage.iconPlay}
+							iconPause={stage.iconPause}
+						/>
 					))}
 				</AudioWrapper>
 			</Wrapper>
