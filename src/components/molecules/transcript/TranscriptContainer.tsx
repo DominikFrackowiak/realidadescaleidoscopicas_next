@@ -1,5 +1,7 @@
 'use client'
 
+import { Suspense } from 'react'
+
 import { useSearchParams } from 'next/navigation'
 import Transcript from './Transcript'
 import stagesData from '../../../../constants/stagesData'
@@ -10,7 +12,7 @@ export default function TranscriptContainer() {
 	const category = searchParams.get('category')
 
 	const categoryData = stagesData.find(data => data.category === category)
- console.log(categoryData)
+	console.log(categoryData)
 	if (!categoryData || !id || !category) return null
 
 	const audioData = categoryData.audios.find(
@@ -20,5 +22,9 @@ export default function TranscriptContainer() {
 
 	console.log(categoryData, audioData)
 
-	return <Transcript audioData={audioData} categoryData={categoryData} />
+	return (
+		<Suspense>
+			<Transcript audioData={audioData} categoryData={categoryData} />
+		</Suspense>
+	)
 }
