@@ -25,7 +25,6 @@ export default function AudioPlayer({
 	iconPlay,
 	iconPause,
 }: Props) {
-	
 	const [isPlaying, setIsPlaying] = useState(false)
 	const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -43,28 +42,33 @@ export default function AudioPlayer({
 
 	return (
 		<div className='flex flex-col'>
-			<button
-				className='flex flex-col items-center gap-5 py-5'
-				onClick={togglePlayPause}
-			>
-				<audio ref={audioRef} src={audio.audioSrc} />
-				<AudioIconsWrapper>
-					<Image
-						src={isPlaying ? `${iconPause}` : `${iconPlay}`}
-						alt={isPlaying ? 'pause icon' : 'play icon'}
-						height={90}
-						width={100}
-						className='absolute top-0 left-0 w-16'
+			<Link href='/'>
+				<button
+					className='flex flex-col items-center gap-5 py-5'
+					onClick={togglePlayPause}
+				>
+					<audio ref={audioRef} src={audio.audioSrc} />
+					<AudioIconsWrapper>
+						<Image
+							src={isPlaying ? `${iconPause}` : `${iconPlay}`}
+							alt={isPlaying ? 'pause icon' : 'play icon'}
+							height={90}
+							width={100}
+							className='absolute top-0 left-0 w-16'
+						/>
+					</AudioIconsWrapper>
+					<span className='text-2xl' style={{ color: textColor }}>
+						{audio.title}
+					</span>
+					<Divider
+						classes='w-32 h-[1px]'
+						style={{
+							color: `${borderColor}`,
+							backgroundColor: `${borderColor}`,
+						}}
 					/>
-				</AudioIconsWrapper>
-				<span className='text-2xl' style={{ color: textColor }}>
-					{audio.title}
-				</span>
-				<Divider
-					classes='w-32 h-[1px]'
-					style={{ color: `${borderColor}`, backgroundColor: `${borderColor}` }}
-				/>
-			</button>
+				</button>
+			</Link>
 
 			<button
 				className='flex flex-col items-center'

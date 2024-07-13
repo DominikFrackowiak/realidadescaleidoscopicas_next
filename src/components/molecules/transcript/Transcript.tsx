@@ -29,6 +29,11 @@ export default function Transcript({ audioData, categoryData }: Props) {
 				</Link>
 			</header>
 			<p dangerouslySetInnerHTML={{ __html: audioData?.transcript }}></p>
+
+			<p>
+				Los textos están basados en el libro de Rachele Borghi, 2020, 
+				<span className='italic'> Decolonialitá e privilegio </span>.
+			</p>
 		</Wrapper>
 	)
 }
