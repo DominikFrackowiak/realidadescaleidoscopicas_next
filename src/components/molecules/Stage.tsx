@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense } from 'react'
+import React, { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 import { StageProps } from '../../../types/types'
@@ -15,6 +15,9 @@ import AudioPlayer from './AudioPlayer'
 import TranscriptContainer from './transcript/TranscriptContainer'
 
 export default function Stage({ stage }: { stage: StageProps }) {
+	const [currentlyPlayingAudioId, setCurrentlyPlayingAudioId] = useState<
+		number | null
+	>(null)
 	const searchParams = useSearchParams()
 	const cat = searchParams.get('category') === stage.category
 	// console.log(stage)
@@ -22,7 +25,8 @@ export default function Stage({ stage }: { stage: StageProps }) {
 		<Suspense>
 			<article
 				className='flex flex-col min-h-screen justify-around items-center'
-				style={{ width: '100vw', backgroundColor: stage.backgroundColor }}
+				style={{ backgroundColor: stage.backgroundColor }}
+				id={stage.category}
 			>
 				{cat ? (
 					<TranscriptContainer />
@@ -62,6 +66,9 @@ export default function Stage({ stage }: { stage: StageProps }) {
 									borderColor={stage.borderColor}
 									iconPlay={stage.iconPlay}
 									iconPause={stage.iconPause}
+									category={stage.category}
+									isPlaying={currentlyPlayingAudioId === audio.id}
+									setCurrentlyPlayingAudioId={setCurrentlyPlayingAudioId}
 								/>
 							))}
 						</AudioWrapper>

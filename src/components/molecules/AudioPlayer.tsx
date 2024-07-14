@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
 import AudioIconsWrapper from '../atoms/AudioIconsWrapper'
 import Divider from '../atoms/Divider'
+
+import scrollToStage from '../../../utils/scrollToStage'
 
 import { Audio } from '../../../types/types'
 
@@ -14,7 +16,11 @@ interface Props {
 	borderColor: string
 	iconPlay: string
 	iconPause: string
-
+	category: string
+	isPlaying: boolean
+	setCurrentlyPlayingAudioId: React.Dispatch<
+		React.SetStateAction<number | null>
+	>
 	audio: Audio
 }
 
@@ -24,20 +30,26 @@ export default function AudioPlayer({
 	borderColor,
 	iconPlay,
 	iconPause,
+	category,
+	isPlaying,
+	setCurrentlyPlayingAudioId,
 }: Props) {
-	const [isPlaying, setIsPlaying] = useState(false)
 	const audioRef = useRef<HTMLAudioElement>(null)
+	useEffect(() => {
+		if (isPlaying) {
+			audioRef.current?.play()
+		} else {
+			audioRef.current?.pause()
+		}
+	}, [isPlaying])
 
 	const togglePlayPause = () => {
-		const sound = audioRef.current
-		if (!sound) return
-
+		scrollToStage(category)
 		if (isPlaying) {
-			sound.pause()
+			setCurrentlyPlayingAudioId(null)
 		} else {
-			sound.play().catch(e => console.error('Error playing audio:', e))
+			setCurrentlyPlayingAudioId(audio.id)
 		}
-		setIsPlaying(!isPlaying)
 	}
 
 	return (
@@ -73,6 +85,7 @@ export default function AudioPlayer({
 			<button
 				className='flex flex-col items-center'
 				style={{ color: textColor }}
+				onClick={() => scrollToStage(category)}
 			>
 				<Link
 					href={`/?category=${audio.category}&id=${audio.id}`}
