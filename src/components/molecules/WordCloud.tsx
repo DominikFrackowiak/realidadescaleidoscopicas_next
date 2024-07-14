@@ -43,7 +43,7 @@ function WordCloudComponent({ initialWords = [] }: WordCloudProps) {
 	}))
 
 	return (
-		<div style={{ height: '700px', width: '100vw' }}>
+		<div style={{ height: '100vh', width: '100vw'}} id='nube'>
 			<ReactWordcloud options={options} words={wordcloudData} />
 		</div>
 	)

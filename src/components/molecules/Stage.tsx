@@ -34,7 +34,7 @@ export default function Stage({ stage }: { stage: StageProps }) {
 					<Wrapper>
 						<Heading
 							headingType={'h2'}
-							className='flex gap-5 items-center font-tavares text-4xl'
+							className='flex gap-5 items-center font-tavares text-5xl font-bold'
 						>
 							<Image
 								src={`${stage.icon}`}
@@ -43,7 +43,9 @@ export default function Stage({ stage }: { stage: StageProps }) {
 								height={150}
 								className='w-[50px] h-[50px]'
 							/>
-							<span style={{ color: stage.titleColor }}>{stage.title}</span>
+							<span style={{ color: stage.titleColor }} className='pt-1'>
+								{stage.title}
+							</span>
 						</Heading>
 						<Description
 							text={stage.description}
