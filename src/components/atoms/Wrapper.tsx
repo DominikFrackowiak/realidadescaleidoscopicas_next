@@ -5,7 +5,7 @@ interface Props {
 
 export default function Wrapper({ children, style }: Props): JSX.Element {
 	return (
-		<div className='flex flex-col justify-around max-w-screen-xl min-h-screen py-20 px-10 gap-20' style={style}>
+		<div className='flex flex-col justify-around max-w-screen-xl min-h-screen py-20 px-10' style={style}>
 			{children}
 		</div>
 	)

@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import ReactWordcloud from 'react-wordcloud'
 import useFirestoreData from '../../hooks/useFirestoreData'
+import Wrapper from '../atoms/Wrapper'
 
 import { FirestoreWord, Options, WordCloudProps } from '../../../types/types'
 
@@ -43,9 +44,27 @@ function WordCloudComponent({ initialWords = [] }: WordCloudProps) {
 	}))
 
 	return (
-		<div style={{ height: '100vh', width: '100vw'}} id='nube'>
-			<ReactWordcloud options={options} words={wordcloudData} />
-		</div>
+		// <Wrapper id='nube'>
+		<section className='flex justify-center' id='nube'>
+			<Wrapper>
+				<ReactWordcloud options={options} words={wordcloudData} />
+
+				<blockquote className='text-[#fc3951] text-lg'>
+					“El caleidoscopio permite ver las cosas de forma distinta y construir
+					nuevas imágenes relacionadas con nuevas realidades. No es solo un tema
+					de puntos de vista sino de puntos de acciones. El caleidoscopio es una
+					herramienta que devuelve imágenes distintas, sin centros ni
+					periferias. Haciendo rodear el caleidoscopio, moviendo los vidrios
+					coloridos que están en su interior, la imagen se transforma y aparecen
+					nuevas constelaciones coloridas. El caleidoscopio nos permite ver la
+					“pluriversidad” del sistema mundo. Aceptar la propuesta decolonial no
+					pasa solo por ponerse las lentes con las que miramos la realidad, sino
+					cambiar las herramientas con la que la miramos, interpretamos y nos
+					proyectamos en ella” (Rachele Borghi, 2020.{' '}
+					<span className='italic'>Decolonialitá e privilegio</span>)
+				</blockquote>
+			</Wrapper>
+		</section>
 	)
 }
 
