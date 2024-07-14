@@ -1,4 +1,5 @@
 import Stage from '../molecules/Stage'
+import { PageScrollIndicator } from '../atoms/PageScrollIndicator'
 // import WordCloudComponent from '../molecules/WordCloud'
 import dynamic from 'next/dynamic'
 
@@ -13,6 +14,7 @@ export default function Stages() {
 
 	return (
 		<>
+		 <PageScrollIndicator/>
 			<WordCloudComponent />
 			{Stages}
 		</>
