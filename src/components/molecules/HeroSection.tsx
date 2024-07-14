@@ -5,7 +5,7 @@ import Stack from '../atoms/Stack'
 
 export default function HeroSection() {
 	return (
-		<section className='relative h-[100vh]' id='inicio'>
+		<section className='relative h-[100vh] overflow-y-hidden' id='inicio'>
 			<video
 				className='hero-video__video absolute top-0'
 				autoPlay

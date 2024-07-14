@@ -35,7 +35,7 @@ export default function MoreInfo() {
 	return (
 		<section className='flex justify-center h-[100vh] bg-[#2e3192]' id='more'>
 			<Wrapper>
-				<Stack classes='gap-[20px]'>
+				<Stack classes='gap-[30px]'>
 					<Heading
 						headingType={'h2'}
 						className=' text-white font-tavares text-6xl text-center'
@@ -44,13 +44,13 @@ export default function MoreInfo() {
 					</Heading>
 					<Heading
 						headingType={'h3'}
-						className=' text-white text-2xl text-center font-bold'
+						className=' text-white text-3xl text-center font-bold'
 					>
 						Des(iguales)
 					</Heading>
 					<Heading
 						headingType={'h3'}
-						className=' text-white text-2xl text-center'
+						className=' text-white text-3xl text-center'
 					>
 						Una mirada caleidoscópica
 					</Heading>
