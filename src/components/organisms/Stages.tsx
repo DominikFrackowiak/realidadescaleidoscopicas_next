@@ -11,6 +11,7 @@ const WordCloudComponent = dynamic(() => import('../molecules/WordCloud'), {
 import stagesData from '../../../constants/stagesData'
 import HeroSection from '../molecules/HeroSection'
 import MoreInfo from '../molecules/MoreInfo'
+import Participate from '../molecules/Participate'
 
 export default function Stages() {
 	const Stages = stagesData.map(stage => <Stage key={stage.id} stage={stage} />)
@@ -20,6 +21,7 @@ export default function Stages() {
 			<Navbar />
 			<HeroSection/>
 			<MoreInfo/>
+			<Participate/>
 			<PageScrollIndicator />
 			<WordCloudComponent />
 			{Stages}
