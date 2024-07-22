@@ -23,7 +23,7 @@ export default function Stages() {
 			<MoreInfo/>
 			<Participate/>
 			<PageScrollIndicator />
-			<WordCloudComponent />
+			{/* <WordCloudComponent /> */}
 			{Stages}
 		</>
 	)
