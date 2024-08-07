@@ -12,6 +12,7 @@ import stagesData from '../../../constants/stagesData'
 import HeroSection from '../molecules/HeroSection'
 import MoreInfo from '../molecules/MoreInfo'
 import Participate from '../molecules/Participate'
+import WhoAreWe from '../molecules/WhoAreWe'
 
 export default function Stages() {
 	const Stages = stagesData.map(stage => <Stage key={stage.id} stage={stage} />)
@@ -23,8 +24,9 @@ export default function Stages() {
 			<MoreInfo/>
 			<Participate/>
 			<PageScrollIndicator />
-			{/* <WordCloudComponent /> */}
+			<WordCloudComponent />
 			{Stages}
+			<WhoAreWe/>
 		</>
 	)
 }
