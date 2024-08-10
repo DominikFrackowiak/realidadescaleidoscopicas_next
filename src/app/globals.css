@@ -39,3 +39,7 @@ body {
 	display: inline-block;
 	transform: rotate(-180deg);
 }
+
+.redOnHover:hover{
+	color: #fc3951;
+}

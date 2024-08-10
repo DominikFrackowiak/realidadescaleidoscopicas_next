@@ -4,18 +4,16 @@ import Wrapper from '../atoms/Wrapper'
 import SplitScreen from './SplitScreen'
 import Heading from '../atoms/Heading'
 
+import renderHtmlContent from '../../../utils/renderHtmlContent'
+
 const LeftSide = () => (
 	<Stack classes='w-[47%] gap-[20px]'>
-		{whoAreWeLeft.map(el => (
-			<p className={'text-xl text-[#364ec6]'}>{el}</p>
-		))}
+		{whoAreWeLeft.map(el => renderHtmlContent(el, 'text-xl text-[#364ec6]'))}
 	</Stack>
 )
 const RightSide = () => (
 	<Stack classes='w-[47%] gap-[20px]'>
-		{whoAreWeRight.map(el => (
-			<p className={'text-xl text-[#364ec6]'}>{el}</p>
-		))}
+		{whoAreWeRight.map(el => renderHtmlContent(el, 'text-xl text-[#364ec6]'))}
 	</Stack>
 )
 
@@ -25,7 +23,7 @@ export default function WhoAreWe() {
 			className='flex flex-col min-h-screen justify-around items-center'
 			id='nosotros'
 		>
-			<Wrapper style={{gap: '30px'}}>
+			<Wrapper style={{ gap: '30px' }}>
 				<Heading
 					headingType={'h2'}
 					className=' text-[#364ec6] font-tavares text-6xl mb-[20px]'
